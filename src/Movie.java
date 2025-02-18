@@ -11,7 +11,6 @@ public class Movie {
     }
     public Movie(String name, int duration, ArrayList<Show> shows) {
         this.name = name;
-
         this.duration = duration;
         this.shows = shows;
     }

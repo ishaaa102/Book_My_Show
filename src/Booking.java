@@ -21,7 +21,8 @@ public class Booking {
             System.out.print(i + ". ");
             i++;
             movie.display();
-        }int  movieChoice=sc.nextInt();
+        }
+        int  movieChoice=sc.nextInt();
         System.out.println("Nice choicee!!!");
         System.out.println();
         Movie wantedMovie= ListOfMovies.get(movieChoice-1);

@@ -12,7 +12,7 @@ public class BookMyShowSimulation {
  *
  * when to use static and non-static function
  *
- * function name - reflect what u r doing inside of the function
+ * function name - reflect what u r doing inside the function
  *
  *  Movie -> name, duration, other metadata related to movie, imdb rating, languages, genres, release date
  *

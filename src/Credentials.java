@@ -11,7 +11,8 @@ public class  Credentials {
     void addUser(String name,String password){
         credentials.put(name,password);
 
-    } boolean isValidUser(String name, String password) {
+    }
+    boolean isValidUser(String name, String password) {
         return credentials.containsKey(name) && credentials.get(name).equals(password);
     }
 }
