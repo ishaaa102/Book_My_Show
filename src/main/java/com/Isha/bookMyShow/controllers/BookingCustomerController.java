@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/booking")
+@RequestMapping("/customer/booking")
 public class BookingCustomerController {
     private final BookingService bookingService;
 
@@ -22,16 +22,6 @@ public class BookingCustomerController {
     @PostMapping("/create")
     public ResponseEntity<Booking> createBooking(@RequestBody BookingRequest bookingRequest) throws Exception {
         return ResponseEntity.ok(bookingService.createBooking(bookingRequest));
-    }
-
-    @GetMapping("/viewAll")
-    public ResponseEntity<List<Booking>> getAllBookings(){
-        return ResponseEntity.ok(bookingService.getAllBookings());
-    }
-
-    @GetMapping("/viewById/{id}")
-    public ResponseEntity<Booking> getBookingById(@PathVariable String id){
-        return ResponseEntity.ok(bookingService.getBookingById(id));
     }
 
     // ToDo- cancel booking

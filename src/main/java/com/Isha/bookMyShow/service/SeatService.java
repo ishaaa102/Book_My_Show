@@ -3,6 +3,7 @@ package com.Isha.bookMyShow.service;
 import com.Isha.bookMyShow.dto.SeatRequest;
 import com.Isha.bookMyShow.entity.Screen;
 import com.Isha.bookMyShow.entity.Seat;
+import com.Isha.bookMyShow.entity.Show;
 import com.Isha.bookMyShow.repo.SeatRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,8 +75,11 @@ public class SeatService {
         return seatRepo.save(updatedSeat);
     }
 
-    public void removeSeat(String seatId) {
+    public Seat removeSeat(String seatId) {
+
+        Seat deletedSeat = getSeatById(seatId);
         seatRepo.deleteById(seatId);
+        return deletedSeat;
     }
 
     public void removeSeatsByScreenId(String screenId) {

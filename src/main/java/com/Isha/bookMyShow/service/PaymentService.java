@@ -6,6 +6,7 @@ import com.Isha.bookMyShow.entity.PaymentMethod;
 import com.Isha.bookMyShow.entity.PaymentStatus;
 import com.Isha.bookMyShow.repo.PaymentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class PaymentService {
     private final BookingService bookingService;
 
     @Autowired
-    public PaymentService(PaymentRepo paymentRepo, BookingService bookingService) {
+    public PaymentService(PaymentRepo paymentRepo, @Lazy BookingService bookingService) {
         this.paymentRepo = paymentRepo;
         this.bookingService=bookingService;
     }

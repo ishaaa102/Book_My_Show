@@ -2,6 +2,7 @@ package com.Isha.bookMyShow.service;
 
 import com.Isha.bookMyShow.dto.ReviewRequest;
 import com.Isha.bookMyShow.entity.Review;
+import com.Isha.bookMyShow.entity.Show;
 import com.Isha.bookMyShow.repo.ReviewRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,8 +61,11 @@ public class ReviewService {
         return reviewRepo.save(updatedReview);
     }
 
-    public void deleteReview(String id){
+    public Review deleteReview(String id){
+
+        Review deletedReview = getReviewById(id);
         reviewRepo.deleteById(id);
+        return deletedReview;
     }
 
 }

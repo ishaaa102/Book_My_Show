@@ -1,6 +1,7 @@
 package com.Isha.bookMyShow.service;
 
 import com.Isha.bookMyShow.dto.SeatCategoryRequest;
+import com.Isha.bookMyShow.entity.Screen;
 import com.Isha.bookMyShow.entity.SeatCategory;
 import com.Isha.bookMyShow.repo.SeatCategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +46,11 @@ public class SeatCategoryService {
         return seatCategoryRepo.save(updatedSeatCategory);
     }
 
-    public void deleteSeatCategory(String categoryId){
-         seatCategoryRepo.deleteById(categoryId);
+    public SeatCategory deleteSeatCategory(String categoryId){
+
+        SeatCategory deletedSeatCategory = getSeatCategoryById(categoryId);
+        seatCategoryRepo.deleteById(categoryId);
+        return deletedSeatCategory;
     }
 
 }

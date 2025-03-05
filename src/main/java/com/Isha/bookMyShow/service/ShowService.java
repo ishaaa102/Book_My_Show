@@ -64,9 +64,6 @@ public class ShowService {
 
     public Show deleteShow(String showId){
         Show deletedShow = getShowById(showId);
-        if(deletedShow==null){
-            return null;
-        }
         showRepo.deleteById(showId);
         return deletedShow;
     }

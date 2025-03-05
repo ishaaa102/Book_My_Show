@@ -19,10 +19,9 @@ public class User {
     private UserType type;
 
     private User(Builder builder) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.type = type;
+        this.username = builder.username;
+        this.password = builder.password;
+        this.type = builder.type;
     }
 
     public static class Builder{

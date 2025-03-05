@@ -24,6 +24,8 @@ public class DashboardService {
         if (user != null && user.getPassword().equals(userRequest.getPassword())) {
             return user.getType();
         }
+
+
         throw new Exception("Invalid username or password");
     }
 

@@ -1,6 +1,7 @@
 package com.Isha.bookMyShow.service;
 
 import com.Isha.bookMyShow.dto.TheatreRequest;
+import com.Isha.bookMyShow.entity.Review;
 import com.Isha.bookMyShow.entity.Screen;
 import com.Isha.bookMyShow.entity.Theatre;
 import com.Isha.bookMyShow.repo.TheatreRepo;
@@ -55,10 +56,13 @@ public class TheatreService {
     }
 
     // Delete a theatre (removes associated screens)
-    public void deleteTheatre(String theatreId) {
+    public Theatre deleteTheatre(String theatreId) {
         List<Screen> screens = screenService.getScreenByTheatreId(theatreId);
         screens.forEach(screen -> screenService.removeScreen(screen.getId()));
+
+        Theatre deletedTheatre = getTheatreById(theatreId);
         theatreRepo.deleteById(theatreId);
+        return deletedTheatre;
     }
 
     public List<Theatre> getTheatres() {

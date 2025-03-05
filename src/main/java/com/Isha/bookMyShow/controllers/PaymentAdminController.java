@@ -10,23 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/payment")
-public class PaymentController {
+@RequestMapping("/admin/payment")
+public class PaymentAdminController {
     private final PaymentService paymentService;
 
     @Autowired
-    public PaymentController(PaymentService paymentService) {
+    public PaymentAdminController(PaymentService paymentService) {
         this.paymentService = paymentService;
-    }
-
-    @PostMapping("/create")
-    public ResponseEntity<Payment> createPayment(@RequestBody PaymentRequest paymentRequest){
-        return ResponseEntity.ok(paymentService.createPayment(paymentRequest));
-    }
-
-    @PostMapping("/retry/{id}")
-    public ResponseEntity<Payment> retryPayment(@PathVariable String id, @RequestBody PaymentRequest paymentRequest) throws Exception {
-        return ResponseEntity.ok(paymentService.retryPayment(id, paymentRequest));
     }
 
     @GetMapping("/viewAll")
@@ -42,3 +32,4 @@ public class PaymentController {
 
 
 }
+

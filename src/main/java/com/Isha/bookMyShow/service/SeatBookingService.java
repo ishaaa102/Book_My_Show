@@ -12,30 +12,21 @@ import java.util.List;
 @Service
 public class SeatBookingService {
 
-    private final SeatService seatService;
-    private final BookingService bookingService;
     private final SeatBookingRepo seatBookingRepo;
 
     @Autowired
-    public SeatBookingService(SeatService seatService, BookingService bookingService, SeatBookingRepo seatBookingRepo) {
-        this.seatService = seatService;
-        this.bookingService = bookingService;
+    public SeatBookingService( SeatBookingRepo seatBookingRepo) {
         this.seatBookingRepo = seatBookingRepo;
     }
 
-    public SeatBooking createSeatBooking(SeatBookingRequest seatBookingRequest) throws Exception {
-        if (seatService.getSeatById(seatBookingRequest.getSeatId()) == null) {
-            throw new Exception("Invalid seat ID");
-        }
-        if (bookingService.getBookingById(seatBookingRequest.getBookingId()) == null) {
-            throw new Exception("Invalid booking ID");
-        }
+    public SeatBooking createSeatBooking(String seatId,String bookingId) throws Exception {
+
 
 //        new SeatBooking(seatId, bookingId);
         
         SeatBooking seatBooking = SeatBooking.builder()
-                .seatId(seatBookingRequest.getSeatId())
-                .bookingId(seatBookingRequest.getBookingId())
+                .seatId(seatId)
+                .bookingId(bookingId)
                 .build();
         
         return seatBookingRepo.save(seatBooking);

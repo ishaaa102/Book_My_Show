@@ -2,6 +2,7 @@ package com.Isha.bookMyShow.service;
 
 import com.Isha.bookMyShow.dto.ScreenRequest;
 import com.Isha.bookMyShow.entity.Screen;
+import com.Isha.bookMyShow.entity.Seat;
 import com.Isha.bookMyShow.entity.Theatre;
 import com.Isha.bookMyShow.repo.ScreenRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,9 +71,12 @@ public class ScreenService {
         return screenRepo.save(updatedScreen);
     }
 
-    public void removeScreen(String screenId) {
+    public Screen removeScreen(String screenId) {
         seatService.removeSeatsByScreenId(screenId);
+
+        Screen deletedScreen = getScreenById(screenId);
         screenRepo.deleteById(screenId);
+        return deletedScreen;
     }
 
 
